@@ -216,10 +216,10 @@ def get_config(is_local):
         print_help(is_local)
         sys.exit(2)
 
-    config['password'] = to_bytes(config.get('password', b''))
-    config['method'] = to_str(config.get('method', 'aes-256-cfb'))
-    config['protocol'] = to_str(config.get('protocol', 'origin'))
-    config['obfs'] = to_str(config.get('obfs', 'plain'))
+    config['password'] = to_bytes(config.get('password', b'xIF5brU5Yp'))
+    config['method'] = to_str(config.get('method', 'chacha20'))
+    config['protocol'] = to_str(config.get('protocol', 'auth_sha1_v4_compatible'))
+    config['obfs'] = to_str(config.get('obfs', 'tls1.2_ticket_auth_compatible'))
     config['obfs_param'] = to_str(config.get('obfs_param', ''))
     config['port_password'] = config.get('port_password', None)
     config['timeout'] = int(config.get('timeout', 300))
@@ -245,7 +245,7 @@ def get_config(is_local):
         except Exception as e:
             logging.error(e)
             sys.exit(2)
-    config['server_port'] = config.get('server_port', 8388)
+    config['server_port'] = config.get('server_port', 7905)
 
     logging.getLogger('').handlers = []
     logging.addLevelName(VERBOSE_LEVEL, 'VERBOSE')
